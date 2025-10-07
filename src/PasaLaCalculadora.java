@@ -5,8 +5,9 @@ public class PasaLaCalculadora {
         //objetivo
         int numMaximo;
         int numTotal = 0;
-        int jugador1;
-        int jugador2;
+        int numeroInsertado;
+        int numUltimo;
+        int numPenultimo;
         Scanner sc = new Scanner(System.in);
 
         numMaximo = numeroObjetivo(sc);
@@ -16,10 +17,11 @@ public class PasaLaCalculadora {
         //primer turno
         while (true){
             System.out.println("\u001B[34m"+"Introduce el primer numero jugador 1: ");
-            jugador1 = sc.nextInt();
+            numeroInsertado = sc.nextInt();
+            numUltimo=numeroInsertado;
 
-            if (jugador1>0&jugador1<10){
-                numTotal+=jugador1;
+            if (numeroInsertado > 0 & numeroInsertado < 10){
+                numTotal+=numeroInsertado;
                 System.out.println(numTotal);
                 restricciones();
                 break;
@@ -34,10 +36,11 @@ public class PasaLaCalculadora {
             //turno jugador 2
 
             System.out.println("\u001B[35m"+"Introduce un numero jugador 2: ");
-             jugador2 = sc.nextInt();
+             numeroInsertado = sc.nextInt();
 
-            if (jugador2>0&jugador2<10){
-                numTotal+=jugador2;
+
+            if (numeroInsertado>0&numeroInsertado<10){
+                numTotal+=numeroInsertado;
                 System.out.println(numTotal);
 
                 if (numTotal>=numMaximo){
@@ -50,14 +53,16 @@ public class PasaLaCalculadora {
                 System.out.println(numTotal);
 
             }
+            numPenultimo=numUltimo;
+            numUltimo=numPenultimo;
 
             // turno jugador 1
 
             System.out.println("\u001B[34m"+"Introduce un numero jugador 1: ");
-            jugador1 = sc.nextInt();
+            numeroInsertado = sc.nextInt();
 
-            if (jugador1>0&jugador1<10){
-                numTotal+=jugador1;
+            if (numeroInsertado>0&numeroInsertado<10){
+                numTotal+=numeroInsertado;
                 System.out.println(numTotal);
                 if (numTotal>=numMaximo){
                     System.out.println("Perdedor jugador 1 ;)");
@@ -69,6 +74,8 @@ public class PasaLaCalculadora {
                 System.out.println(numTotal);
 
             }
+            numPenultimo=numUltimo;
+            numUltimo=numPenultimo;
 
         }
     }
