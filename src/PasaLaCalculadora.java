@@ -21,12 +21,14 @@ public class PasaLaCalculadora {
 
             if (numeroInsertado > 0 & numeroInsertado < 10) {
                 numTotal += numeroInsertado;
-                System.out.println(numTotal);
-                numUltimo=numeroInsertado;
+                System.out.println( "El total es: " + numTotal);
+                numUltimo = numeroInsertado;
+
                 break;
             }
         }
 
+        System.out.println("el numero anterior es " + numUltimo);
         //resto juego
 
 
@@ -39,9 +41,15 @@ public class PasaLaCalculadora {
 
 
             if (numeroInsertado > 0 & numeroInsertado < 10) {
-                restricciones(numeroInsertado, numUltimo, numPenultimo, numTotal);
 
-                System.out.println(numTotal);
+               // validacion(numeroInsertado, numPenultimo, numUltimo);
+                if (validacion(numeroInsertado, numPenultimo, numUltimo) == 0) {
+                    numTotal += numeroInsertado;
+                    numPenultimo = numUltimo;
+                    numUltimo = numeroInsertado;
+                    System.out.println( "El total es: " + numTotal);
+                }
+                System.out.println("el numero anterior es " + numUltimo);
 
                 if (numTotal >= numMaximo) {
                     System.out.println("Perdedor jugador 2 ;)");
@@ -50,8 +58,7 @@ public class PasaLaCalculadora {
 
             } else {
                 System.out.println("numero incorrecto, pierdes turno");
-                System.out.println(numTotal);
-
+                System.out.println( "El total es: " + numTotal);
             }
 
 
@@ -61,9 +68,17 @@ public class PasaLaCalculadora {
             numeroInsertado = sc.nextInt();
 
             if (numeroInsertado > 0 & numeroInsertado < 10) {
-                restricciones(numeroInsertado, numUltimo, numPenultimo, numTotal);
 
-                System.out.println(numTotal);
+               // validacion(numeroInsertado, numPenultimo, numUltimo);
+                if (validacion(numeroInsertado, numPenultimo, numUltimo) == 0) {
+                    numTotal += numeroInsertado;
+                    numPenultimo = numUltimo;
+                    numUltimo = numeroInsertado;
+                    System.out.println( "El total es: " + numTotal);
+                }
+
+                System.out.println("el numero anterior es " + numUltimo);
+
                 if (numTotal >= numMaximo) {
                     System.out.println("Perdedor jugador 1 ;)");
                     break;
@@ -71,14 +86,14 @@ public class PasaLaCalculadora {
 
             } else {
                 System.out.println("numero incorrecto, pierdes turno");
-                System.out.println(numTotal);
-
+                System.out.println( "El total es: " + numTotal);
             }
 
 
         }
     }
 
+    //peticion al usuario del numero objetivo
     private static int numeroObjetivo(Scanner sc) {
         int numMaximo;
         while (true) {
@@ -101,105 +116,82 @@ public class PasaLaCalculadora {
     }
 
     //restricciones
-    public static void restricciones(int numeroInsertado, int numPenultimo, int numUltimo, int numTotal) {
-        if (numeroInsertado != numUltimo & numeroInsertado!=numPenultimo ) {
+    public static int validacion(int numeroInsertado, int numPenultimo, int numUltimo) {
+
+        if (numeroInsertado != numUltimo & numeroInsertado != numPenultimo) {
             switch (numUltimo) {
 
                 case 1: {
-                    if (numeroInsertado == 2 || numeroInsertado == 3 || numeroInsertado == 4 || numeroInsertado == 7) {
+                    if (numeroInsertado == 2 | numeroInsertado == 3 | numeroInsertado == 4 | numeroInsertado == 7) {
                         System.out.println("El numero insertado cumple las normas");
-                        numTotal += numeroInsertado;
-                        numPenultimo = numUltimo;
-                        numUltimo = numeroInsertado;
-
+                        return 0;
                     }
                     break;
+
                 }
                 case 2: {
-                    if (numeroInsertado == 1 || numeroInsertado == 3 || numeroInsertado == 5 || numeroInsertado == 8) {
+                    if (numeroInsertado == 1 | numeroInsertado == 3 | numeroInsertado == 5 | numeroInsertado == 8) {
                         System.out.println("El numero insertado cumple las normas");
-                        numTotal += numeroInsertado;
-                        numPenultimo = numUltimo;
-                        numUltimo = numeroInsertado;
-
+                        return 0;
                     }
                     break;
                 }
                 case 3: {
-                    if (numeroInsertado == 1 || numeroInsertado == 2 || numeroInsertado == 6 || numeroInsertado == 9) {
+                    if (numeroInsertado == 1 | numeroInsertado == 2 | numeroInsertado == 6 | numeroInsertado == 9) {
                         System.out.println("El numero insertado cumple las normas");
-                        numTotal += numeroInsertado;
-                        numPenultimo = numUltimo;
-                        numUltimo = numeroInsertado;
-
+                        return 0;
                     }
                     break;
                 }
                 case 4: {
-                    if (numeroInsertado == 1 || numeroInsertado == 5 || numeroInsertado == 6 || numeroInsertado == 7) {
+                    if (numeroInsertado == 1 | numeroInsertado == 5 | numeroInsertado == 6 | numeroInsertado == 7) {
                         System.out.println("El numero insertado cumple las normas");
-                        numTotal += numeroInsertado;
-                        numPenultimo = numUltimo;
-                        numUltimo = numeroInsertado;
-
-                                            }
+                        return 0;
+                    }
                     break;
                 }
                 case 5: {
-                    if (numeroInsertado == 2 || numeroInsertado == 4 || numeroInsertado == 6 || numeroInsertado == 8) {
+                    if (numeroInsertado == 2 | numeroInsertado == 4 | numeroInsertado == 6 | numeroInsertado == 8) {
                         System.out.println("El numero insertado cumple las normas");
-                        numTotal += numeroInsertado;
-                        numPenultimo = numUltimo;
-                        numUltimo = numeroInsertado;
-
-
+                        return 0;
                     }
                     break;
                 }
                 case 6: {
-                    if (numeroInsertado == 3 || numeroInsertado == 4 || numeroInsertado == 5 || numeroInsertado == 9) {
+                    if (numeroInsertado == 3 | numeroInsertado == 4 | numeroInsertado == 5 | numeroInsertado == 9) {
                         System.out.println("El numero insertado cumple las normas");
-                        numTotal += numeroInsertado;
-                        numPenultimo = numUltimo;
-                        numUltimo = numeroInsertado;
-
+                        return 0;
                     }
                     break;
                 }
                 case 7: {
-                    if (numeroInsertado == 1 || numeroInsertado == 4 || numeroInsertado == 8 || numeroInsertado == 9) {
+                    if (numeroInsertado == 1 | numeroInsertado == 4 | numeroInsertado == 8 | numeroInsertado == 9) {
                         System.out.println("El numero insertado cumple las normas");
-                        numTotal += numeroInsertado;
-                        numPenultimo = numUltimo;
-                        numUltimo = numeroInsertado;
-
+                        return 0;
                     }
                     break;
                 }
                 case 8: {
-                    if (numeroInsertado == 2 || numeroInsertado == 5 || numeroInsertado == 7 || numeroInsertado == 9) {
+                    if (numeroInsertado == 2 | numeroInsertado == 5 | numeroInsertado == 7 | numeroInsertado == 9) {
                         System.out.println("El numero insertado cumple las normas");
-                        numTotal += numeroInsertado;
-                        numPenultimo = numUltimo;
-                        numUltimo = numeroInsertado;
+                        return 0;
                     }
                     break;
                 }
                 case 9: {
-                    if (numeroInsertado == 3 || numeroInsertado == 6 || numeroInsertado == 7 || numeroInsertado == 8) {
+                    if (numeroInsertado == 3 | numeroInsertado == 6 | numeroInsertado == 7 | numeroInsertado == 8) {
                         System.out.println("El numero insertado cumple las normas");
-                        numTotal += numeroInsertado;
-                        numPenultimo = numUltimo;
-                        numUltimo = numeroInsertado;
-
+                        return 0;
                     }
                     break;
                 }
 
             }
-        } else {
-            System.out.println("no cumples las normas");
         }
+            System.out.println("El numero insertado no cumple las normas, pierdes turno");
+            return 1;
+
+
     }
 }
 
