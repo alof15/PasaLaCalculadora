@@ -21,14 +21,13 @@ public class PasaLaCalculadora {
 
             if (numeroInsertado > 0 & numeroInsertado < 10) {
                 numTotal += numeroInsertado;
-                System.out.println( "El total es: " + numTotal);
+                System.out.println("El total es: " + numTotal);
                 numUltimo = numeroInsertado;
 
                 break;
             }
         }
 
-        System.out.println("el numero anterior es " + numUltimo);
         //resto juego
 
 
@@ -42,12 +41,12 @@ public class PasaLaCalculadora {
 
             if (numeroInsertado > 0 & numeroInsertado < 10) {
 
-               // validacion(numeroInsertado, numPenultimo, numUltimo);
+                // validacion(numeroInsertado, numPenultimo, numUltimo);
                 if (validacion(numeroInsertado, numPenultimo, numUltimo) == 0) {
                     numTotal += numeroInsertado;
                     numPenultimo = numUltimo;
                     numUltimo = numeroInsertado;
-                    System.out.println( "El total es: " + numTotal);
+                    System.out.println("El total es: " + numTotal);
                 }
                 System.out.println("el numero anterior es " + numUltimo);
 
@@ -58,7 +57,7 @@ public class PasaLaCalculadora {
 
             } else {
                 System.out.println("numero incorrecto, pierdes turno");
-                System.out.println( "El total es: " + numTotal);
+                System.out.println("El total es: " + numTotal);
             }
 
 
@@ -69,12 +68,12 @@ public class PasaLaCalculadora {
 
             if (numeroInsertado > 0 & numeroInsertado < 10) {
 
-               // validacion(numeroInsertado, numPenultimo, numUltimo);
+                // validacion(numeroInsertado, numPenultimo, numUltimo);
                 if (validacion(numeroInsertado, numPenultimo, numUltimo) == 0) {
                     numTotal += numeroInsertado;
                     numPenultimo = numUltimo;
                     numUltimo = numeroInsertado;
-                    System.out.println( "El total es: " + numTotal);
+                    System.out.println("El total es: " + numTotal);
                 }
 
                 System.out.println("el numero anterior es " + numUltimo);
@@ -86,13 +85,18 @@ public class PasaLaCalculadora {
 
             } else {
                 System.out.println("numero incorrecto, pierdes turno");
-                System.out.println( "El total es: " + numTotal);
+                System.out.println("El total es: " + numTotal);
             }
 
 
         }
     }
 
+    /**
+     * pedimos al usuario el numero objetivo
+     * @param sc
+     * @return numMaximo
+     */
     //peticion al usuario del numero objetivo
     private static int numeroObjetivo(Scanner sc) {
         int numMaximo;
@@ -116,6 +120,16 @@ public class PasaLaCalculadora {
     }
 
     //restricciones
+
+    /**
+     * El numero insertado no puede ser igual al anterior
+     * El numero insertado tiene que estar en la misma fila o columna que el numero anterior
+     * @param numeroInsertado
+     * @param numPenultimo
+     * @param numUltimo
+     * @return 0 si numeroInsertado es valido
+     * @return 1 si numeroInsertado no es valido
+     */
     public static int validacion(int numeroInsertado, int numPenultimo, int numUltimo) {
 
         if (numeroInsertado != numUltimo & numeroInsertado != numPenultimo) {
@@ -188,8 +202,8 @@ public class PasaLaCalculadora {
 
             }
         }
-            System.out.println("El numero insertado no cumple las normas, pierdes turno");
-            return 1;
+        System.out.println("El numero insertado no cumple las normas, pierdes turno");
+        return 1;
 
 
     }
