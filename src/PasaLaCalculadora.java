@@ -12,6 +12,26 @@ public class PasaLaCalculadora {
 
         numMaximo = numeroObjetivo(sc);
         //partida
+        /**
+         *  System.out.println("Escoja numero de jugadores");
+         *        while{
+         *        if (numJugadore==2){
+         *             (normas)
+         *             (dosJugadores)
+         *                     (quieres jugar otra partida)
+         *         }
+         *         if (numJugadores==3){
+         *             (normas)
+         *             (tresJugadores)
+         *                     (quieres jugar otra partida)
+         *         }
+         *         else {
+         *             System.out.println("numero jugadores inbalido");
+         *             break;
+         *         }
+         *
+         *         }
+         */
 
 
         //primer turno
