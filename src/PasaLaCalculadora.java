@@ -101,7 +101,7 @@ public class PasaLaCalculadora {
     }
 
     //restricciones
-    private static void restricciones(int numeroInsertado, int numPenultimo, int numUltimo, int numTotal) {
+    public static void restricciones(int numeroInsertado, int numPenultimo, int numUltimo, int numTotal) {
         if (numeroInsertado != numUltimo & numeroInsertado!=numPenultimo ) {
             switch (numUltimo) {
 
@@ -111,9 +111,9 @@ public class PasaLaCalculadora {
                         numTotal += numeroInsertado;
                         numPenultimo = numUltimo;
                         numUltimo = numeroInsertado;
-                        return numTotal,numPenultimo,numUltimo ;
-                    }
 
+                    }
+                    break;
                 }
                 case 2: {
                     if (numeroInsertado == 1 || numeroInsertado == 3 || numeroInsertado == 5 || numeroInsertado == 8) {
