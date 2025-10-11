@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Scanner;
 
 public class PasaLaCalculadora {
@@ -35,6 +36,7 @@ public class PasaLaCalculadora {
 
 
         //primer turno
+
         while (true) {
             System.out.println("\u001B[34m" + "Introduce el primer numero jugador 1: ");
             numeroInsertado = sc.nextInt();
@@ -57,63 +59,54 @@ public class PasaLaCalculadora {
 
             System.out.println("\u001B[35m" + "Introduce un numero jugador 2: ");
             numeroInsertado = sc.nextInt();
+            turno(numMaximo,  numTotal,numUltimo,numeroInsertado, numPenultimo);
+            if (validacion(numeroInsertado, numPenultimo, numUltimo) == 0) {
+                numTotal += numeroInsertado;
+                numPenultimo = numUltimo;
+                numUltimo = numeroInsertado;
 
-
-            if (numeroInsertado > 0 & numeroInsertado < 10) {
-
-                // validacion(numeroInsertado, numPenultimo, numUltimo);
-                if (validacion(numeroInsertado, numPenultimo, numUltimo) == 0) {
-                    numTotal += numeroInsertado;
-                    numPenultimo = numUltimo;
-                    numUltimo = numeroInsertado;
-                    System.out.println("El total es: " + numTotal);
-                }
                 System.out.println("el numero anterior es " + numUltimo);
-
-                if (numTotal >= numMaximo) {
-                    System.out.println("Perdedor jugador 2 ;)");
-                    break;
-                }
-
-            } else {
-                System.out.println("numero incorrecto, pierdes turno");
-                System.out.println("El total es: " + numTotal);
             }
 
+            if (numTotal >= numMaximo) {
+                System.out.println("Perdedor jugador 2 ;)");
+                break;
+            }
 
             // turno jugador 1
 
             System.out.println("\u001B[34m" + "Introduce un numero jugador 1: ");
             numeroInsertado = sc.nextInt();
-
-            if (numeroInsertado > 0 & numeroInsertado < 10) {
-
-                // validacion(numeroInsertado, numPenultimo, numUltimo);
-                if (validacion(numeroInsertado, numPenultimo, numUltimo) == 0) {
-                    numTotal += numeroInsertado;
-                    numPenultimo = numUltimo;
-                    numUltimo = numeroInsertado;
-                    System.out.println("El total es: " + numTotal);
-                }
+            turno(numMaximo, numTotal, numUltimo, numeroInsertado, numPenultimo);
+            if (validacion(numeroInsertado, numPenultimo, numUltimo) == 0) {
+                numTotal += numeroInsertado;
+                numPenultimo = numUltimo;
+                numUltimo = numeroInsertado;
 
                 System.out.println("el numero anterior es " + numUltimo);
-
-                if (numTotal >= numMaximo) {
-                    System.out.println("Perdedor jugador 1 ;)");
-                    break;
-                }
-
-            } else {
-                System.out.println("numero incorrecto, pierdes turno");
-                System.out.println("El total es: " + numTotal);
+            }
+            if (numTotal >= numMaximo) {
+                System.out.println("Perdedor jugador 1 ;)");
+                break;
             }
 
 
         }
+        //jugar otra partida
+        System.out.println("Si desea continuar escriva Y si no pulse cualquier tecla.");
+        Scanner cr=new Scanner(System.in);
+        String continuar = cr.nextLine();
+
+        if(Objects.equals(continuar, "Y")){
+
+        }
+        else{}
+
     }
 
     /**
      * pedimos al usuario el numero objetivo
+     *
      * @param sc
      * @return numMaximo
      */
@@ -139,11 +132,33 @@ public class PasaLaCalculadora {
         return numMaximo;
     }
 
+    public static int turno(int numMaximo, int numTotal, int numUltimo, int numeroInsertado, int numPenultimo) {
+
+
+        if (numeroInsertado > 0 & numeroInsertado < 10) {
+
+            // validacion(numeroInsertado, numPenultimo, numUltimo);
+            if (validacion(numeroInsertado, numPenultimo, numUltimo) == 0) {
+                numTotal += numeroInsertado;
+
+                System.out.println("El total es: " + numTotal);
+            }
+
+        } else {
+            System.out.println("numero incorrecto, pierdes turno");
+            System.out.println("El total es: " + numTotal);
+        }
+
+
+        return numTotal;
+    }
+
     //restricciones
 
     /**
      * El numero insertado no puede ser igual al anterior
      * El numero insertado tiene que estar en la misma fila o columna que el numero anterior
+     *
      * @param numeroInsertado
      * @param numPenultimo
      * @param numUltimo
