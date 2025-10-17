@@ -8,41 +8,67 @@ public class PasaLaCalculadora {
         int numTotal = 0;
         int numeroInsertado = 0;
         int numUltimo = 0;
+        int numeroJugadores ;
+        String jugador1="";
+        String jugador2="";
+        String jugador3="";
 
-        int numeroJugadores = 0;
         Scanner sc = new Scanner(System.in);
-
+        //
+        System.out.println("ingrese el numero de jugadores:");
+        numeroJugadores= sc.nextInt();
+        if(numeroJugadores==2){
+            System.out.println("ingrese su nombre jugador 1");
+            jugador1=sc.next();
+            System.out.println("ingrese su nombre jugador 2");
+            jugador2=sc.next();
+        }
+        if (numeroJugadores==3){
+            System.out.println("ingrese su nombre jugador 1");
+            jugador1=sc.next();
+            System.out.println("ingrese su nombre jugador 2");
+            jugador2=sc.next();
+            System.out.println("ingrese su nombre jugador 3");
+            jugador3=sc.next();
+        }
+        String[]jugadores={jugador1, jugador2, jugador3};
         while (true) {
             numMaximo = numeroObjetivo(sc);
-            numTotal = primerTurno(numeroInsertado, numTotal, sc);
-            numUltimo = numTotal;
+           // numTotal = primerTurno(numeroInsertado, numTotal, sc, jugador1);
+           // numUltimo = numTotal;
+
             while (true) {
 
                 for (int i = 0; i < numeroJugadores; i++) {
-                    System.out.println("\u001B[35m" + "Introduce un numero jugador 2: ");
+                    System.out.println("\u001B[35m" + "Introduce un numero " + jugadores[i] +": ");
                     numeroInsertado = sc.nextInt();
                     while (validacion(numeroInsertado,numUltimo) == 1) {
-                        System.out.println("numero incorrecto");
+                        System.out.println("numero incorrecto, vuelva a insertar un numero "+ jugadores[i]);
                         numeroInsertado = sc.nextInt();
                     }
-                    numTotal += numeroInsertado;
-                    numUltimo = numeroInsertado;
+
+                        numTotal += numeroInsertado;
+                        numUltimo = numeroInsertado;
+                    System.out.println(numTotal);
+
                     if (numTotal >= numMaximo) {
-                        System.out.println("Perdedor jugador " + i);
+                        System.out.println("Perdedor jugador " +  jugadores[i]);
                         break;
                     }
                 }
-                break;
+                if (numTotal >= numMaximo) {
+                    break;
+                }
             }
 
 
             //jugar otra partida
-            System.out.println("Si desea continuar escriva Y si no pulse cualquier tecla.");
+            System.out.println("Si desea continuar escriba `Y´ si no pulse cualquier tecla.");
             Scanner cr = new Scanner(System.in);
             String continuar = cr.nextLine();
 
             if (!Objects.equals(continuar, "Y")) {
-                System.out.println("saliendo");
+                System.out.println("Saliendo del sistema");
                 break;
 
             } else {
@@ -60,9 +86,9 @@ public class PasaLaCalculadora {
      * @param sc
      * @return
      */
-    public static int primerTurno(int numeroInsertado, int numUltimo, Scanner sc) {
+    public static int primerTurno(int numeroInsertado, int numUltimo, Scanner sc, String jugador1) {
 
-        System.out.println("\u001B[34m" + "Introduce el primer numero jugador 1: ");
+        System.out.println("\u001B[34m" + "Introduce el primer numero "+ jugador1 + " :");
         numeroInsertado = sc.nextInt();
 
         if (numeroInsertado > 0 & numeroInsertado < 10) {
@@ -176,6 +202,13 @@ public class PasaLaCalculadora {
                 }
                 case 9: {
                     if (numeroInsertado == 3 | numeroInsertado == 6 | numeroInsertado == 7 | numeroInsertado == 8) {
+                        System.out.println("El numero insertado cumple las normas");
+                        return 0;
+                    }
+                    break;
+                }
+                case 0: {
+                    if (numeroInsertado > 0 & numeroInsertado < 10) {
                         System.out.println("El numero insertado cumple las normas");
                         return 0;
                     }
