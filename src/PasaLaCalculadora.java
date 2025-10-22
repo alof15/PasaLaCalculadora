@@ -6,59 +6,45 @@ public class PasaLaCalculadora {
 
         int numMax;
         int numTotal = 0;
-        int numeroInsertado = 0;
+        int numeroInsertado;
         int numUltimo = 0;
-        int numeroJugadores;
-        String jugador1 = "";
-        String jugador2 = "";
-        String jugador3 = "";
-
-
-
+        int numeroJugadores ;
         Scanner sc = new Scanner(System.in);
-        //peticion al usuario del numero de jugadores
-        System.out.println("ingrese el numero de jugadores, en caso de ser más de tres no podras poner nombres a los jugadores:");
+
+        //peticion al usuario del número de jugadores
+
+        System.out.println("ingrese el numero de jugadores:");
         numeroJugadores = sc.nextInt();
 
-        //asignacion de nombres
-        if (numeroJugadores == 2) {
-            System.out.println("ingrese su nombre jugador 1");
-            jugador1 = sc.next();
-            System.out.println("ingrese su nombre jugador 2");
-            jugador2 = sc.next();
+        //creación de un array para almacenar los nombres del usuario
+
+        String[] jugadores = new String[numeroJugadores];
+
+        //asignación de nombres dentro de un for para poder asignarle a cada ciclo un nombre y almacenarlo en un array
+
+        for (int i = 0; i < numeroJugadores; i++) {
+
+            System.out.println("Introduce un nombre jugador" + (i + 1));
+            jugadores[i] = sc.next();
+
         }
-        if (numeroJugadores == 3) {
-            System.out.println("ingrese su nombre jugador 1");
-            jugador1 = sc.next();
-            System.out.println("ingrese su nombre jugador 2");
-            jugador2 = sc.next();
-            System.out.println("ingrese su nombre jugador 3");
-            jugador3 = sc.next();
-        }
-        String[] jugadores = {jugador1, jugador2, jugador3};
 
         while (true) {
+
+
             numMax = obtenerNumeroObjetivo(sc);
 
             while (true) {
 
                 for (int i = 0; i < numeroJugadores; i++) {
-                    //2 y 3 jugadores van a poder poner su nombre mientras que mas de estos numeros no
-                    if (numeroJugadores == 2 | numeroJugadores == 3) {
-                        System.out.println("\u001B[35m" + "Introduce un numero " + jugadores[ i ] + " : ");
-                    } else {
-                        System.out.println("\u001B[35m" + "Introduce un numero jugador" + i + " : ");
-                    }
+
+                    System.out.println("\u001B[35m" + "Introduce un numero " + jugadores[i] + " : ");
+
                     numeroInsertado = sc.nextInt();
 
                     while (validarNumero(numeroInsertado, numUltimo) == 1) {
 
-                        if (numeroJugadores == 2 | numeroJugadores == 3) {
-                            System.out.println("\u001B[35m" + "numero incorrecto, vuelva a insertar un numero " + jugadores[i] + " : ");
-                        } else {
-                            System.out.println("\u001B[35m" + "numero incorrecto, vuelva a insertar un numero jugador" + i + " : ");
-                        }
-
+                        System.out.println("\u001B[35m" + "numero incorrecto, vuelva a insertar un numero " + jugadores[i] + " : ");
 
                         numeroInsertado = sc.nextInt();
                     }
@@ -68,11 +54,9 @@ public class PasaLaCalculadora {
                     System.out.println(numTotal);
 
                     if (numTotal >= numMax) {
-                        if (numeroJugadores == 2 | numeroJugadores == 3) {
-                            System.out.println("Perdedor  " + jugadores[i]);
-                        }else{
-                            System.out.println("Perdedor jugador" + i);
-                        }
+
+                        System.out.println("Perdedor  " + jugadores[i]);
+
                         break;
                     }
                 }
@@ -118,7 +102,7 @@ public class PasaLaCalculadora {
             } else if (numMaximo > 10 & numMaximo < 99) {
                 break;
             } else {
-                System.out.println("\u001B[31m" + "Que sea correcto ;}");
+                System.out.println("\u001B[31m" + "Que sea correcto ");
             }
 
         }
