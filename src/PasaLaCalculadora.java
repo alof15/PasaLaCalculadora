@@ -8,17 +8,19 @@ public class PasaLaCalculadora {
         int numTotal = 0;
         int numeroInsertado;
         int numUltimo = 0;
-        int numeroJugadores ;
+        int numeroJugadores;
         Scanner sc = new Scanner(System.in);
 
         //peticion al usuario del número de jugadores
 
-        System.out.println("ingrese el numero de jugadores:");
+        System.out.println("Ingrese el numero de jugadores:");
         numeroJugadores = sc.nextInt();
 
         //creación de un array para almacenar los nombres del usuario
 
         String[] jugadores = new String[numeroJugadores];
+        String[] colors = new String[numeroJugadores];
+
 
         //asignación de nombres dentro de un for para poder asignarle a cada ciclo un nombre y almacenarlo en un array
 
@@ -26,6 +28,8 @@ public class PasaLaCalculadora {
 
             System.out.println("Introduce un nombre jugador" + (i + 1));
             jugadores[i] = sc.next();
+            System.out.println("Escoge un color, si quieres\n 1 amarillo\n 2 azul\n 3 purpura \n 4 cyan");
+            colors [i]= selecColor(sc);
 
         }
 
@@ -38,15 +42,16 @@ public class PasaLaCalculadora {
 
                 for (int i = 0; i < numeroJugadores; i++) {
 
-                    System.out.println("\u001B[35m" + "Introduce un numero " + jugadores[i] + " : ");
+                    System.out.println(colors[i] + "Introduce un numero " + jugadores[i] + " : ");
 
                     numeroInsertado = sc.nextInt();
 
                     while (validarNumero(numeroInsertado, numUltimo) == 1) {
 
-                        System.out.println("\u001B[35m" + "numero incorrecto, vuelva a insertar un numero " + jugadores[i] + " : ");
+                        System.out.println("\u001B[31m" + "El numero es incorrecto, vuelva a intentarlo " + jugadores[i] + " : ");
 
                         numeroInsertado = sc.nextInt();
+
                     }
 
                     numTotal += numeroInsertado;
@@ -55,7 +60,7 @@ public class PasaLaCalculadora {
 
                     if (numTotal >= numMax) {
 
-                        System.out.println("Perdedor  " + jugadores[i]);
+                        System.out.println(colors[i]+"Perdedor  " + jugadores[i]);
 
                         break;
                     }
@@ -66,16 +71,47 @@ public class PasaLaCalculadora {
             }
 
             //peticion al usuario de la letra Y para poder jugar otra partida
-            System.out.println("Si desea continuar escriba `Y´, en caso contrario pulse otra tecla.");
+            System.out.println("Si desea terminar la partida escriba `n´, en caso contrario pulse otra tecla.");
             Scanner cr = new Scanner(System.in);
             String continuar = cr.nextLine();
 
-            if (!Objects.equals(continuar, "Y")) {
+            if (Objects.equals(continuar, "no") | Objects.equals(continuar, "n")) {
                 System.out.println("Saliendo del sistema");
                 break;
 
             } else {
                 System.out.println("Continuemos");
+
+
+            }
+        }
+
+    }
+
+    private static String selecColor(Scanner sc) {
+        int color = sc.nextInt();
+        switch (color) {
+            case 1: {
+                return ("\u001B[33m");//amarelo
+
+            }
+            case 2: {
+                return ("\u001B[34m");
+
+            }//azul
+            case 3: {
+                return ("\u001B[35m");//purpura
+
+
+            }
+            case 4:{
+                return ("\u001B[36m");//cian
+
+            }
+            default:{
+                System.out.println("Color por defecto");
+                return ("\u001B[37m");
+
             }
         }
 
