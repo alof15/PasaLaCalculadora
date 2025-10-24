@@ -10,9 +10,10 @@ public class PasaLaCalculadora {
         int numUltimo = 0;
         int numeroJugadores;
         Scanner sc = new Scanner(System.in);
-         System.out.println("Normas\n " +
-                "1.El primer jugador puede introducir cualquiera dentro del rango.\n"+
-                "2.El siguiente número ha de ser distinto al anterior y estar en la misma fila o columna. "
+        
+        System.out.println("Normas\n " +
+                "\t1.El primer jugador puede introducir cualquiera dentro del rango.\n"+
+                "\t2.El siguiente número ha de ser distinto al anterior y estar en la misma fila o columna. "
                     );
         //peticion al usuario del número de jugadores
 
@@ -91,7 +92,7 @@ public class PasaLaCalculadora {
 
     }
 
-    private static String selecColor(Scanner sc) {
+    public static String selecColor(Scanner sc) {
         int color = sc.nextInt();
         switch (color) {
             case 1: {
@@ -127,7 +128,7 @@ public class PasaLaCalculadora {
      * @param sc
      * @return numMaximo numero objetivo a no superar
      */
-    private static int obtenerNumeroObjetivo(Scanner sc) {
+    public static int obtenerNumeroObjetivo(Scanner sc) {
         int numMaximo;
         while (true) {
 
