@@ -10,7 +10,10 @@ public class PasaLaCalculadora {
         int numUltimo = 0;
         int numeroJugadores;
         Scanner sc = new Scanner(System.in);
-
+         System.out.println("Normas\n " +
+                "1.El primer jugador puede introducir cualquiera dentro del rango.\n"+
+                "2.El siguiente número ha de ser distinto al anterior y estar en la misma fila o columna. "
+                    );
         //peticion al usuario del número de jugadores
 
         System.out.println("Ingrese el numero de jugadores:");
